@@ -1,0 +1,29 @@
+@keyframes vertex {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.maze {
+	animation-duration: 10s;
+  animation-name: vertex;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+	height: 80px;
+	width: 80px;
+}
+
+.wrapper {
+	align-items: center;
+}
+
+.button {
+	align-items: center;
+	margin-top: 20px;
+	margin-bottom: -20px;
+	justify-content: space-between;
+}
