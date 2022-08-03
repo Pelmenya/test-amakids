@@ -1,20 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export interface TRulesState {
+export interface IRulesState {
   isOpen: boolean;
   isNeverOpen: boolean;
-  level: number;
-  speed: number;
-  stepCount: number;
 }
 
 export const initialRulesState = {
   isOpen: true,
-  level: 1,
-  speed: 1,
-  stepCount: 10,
   isNeverOpen: false,
-} as TRulesState;
+} as IRulesState;
 
 const rulesSlice = createSlice({
   name: 'rulesModal',

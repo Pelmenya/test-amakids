@@ -21,6 +21,10 @@
 	align-items: center;
 }
 
+.wrapper input, label {
+	cursor: pointer;
+}
+
 .button {
 	align-items: center;
 	margin-top: 20px;

@@ -1,0 +1,4 @@
+.field {
+	background-color: var(--color-button-light);
+	color: var(--background-element);
+}
