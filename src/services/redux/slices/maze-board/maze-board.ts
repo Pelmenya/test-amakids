@@ -12,7 +12,7 @@ export interface IMazeBoardState {
 	fieldsArr: string[],
 	fieldsDescriptionX: string[],
 	fieldsDescriptionY: string[],
-	steps: TArrow[],
+	steps?: TArrow[],
 	startId: string,
 	endId: string,
 	isWin: false,
@@ -55,6 +55,14 @@ const mazeBoardSlice = createSlice({
 		},
 		setIsWin: (state, action) => {
 			state.isWin = action.payload;
+		},
+
+		upLevel: (state) => {
+			state.steps = undefined;
+			state.axisX = state.axisX + 1;
+			state.axisY = state.axisY + 1;
+			state.level = state.level + 1;
+			state.stepsCount = state.stepsCount + 2;
 		}
 	},
 });
@@ -65,6 +73,7 @@ export const {
 	setStepCount,
 	setMazeData,
 	setFieldsDisabled,
-	setIsWin
+	setIsWin,
+	upLevel
 } = mazeBoardSlice.actions;
 export const mazeBoardReducer = mazeBoardSlice.reducer;

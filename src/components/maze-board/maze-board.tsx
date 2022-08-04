@@ -1,6 +1,9 @@
+import { useEffect } from "react";
 import { useAppDispatch } from "../../hooks/use-app-dispatch";
 import { useAppSelector } from "../../hooks/use-app-selector";
 import { getMazeBoardState } from "../../services/redux/selectors/maze-board/maze.board";
+import { upLevel } from "../../services/redux/slices/maze-board/maze-board";
+import { setOpenRulesModal } from "../../services/redux/slices/rules/rules";
 import { handlerMazeData } from "../../utils/functions/handlers/handler-maze-data";
 import { fieldBorder, maxWidthBoard } from "../../utils/setup-game";
 import { Button } from "../button/button";
@@ -25,6 +28,12 @@ export const MazeBoard = () => {
 		isWin,
 	} = useAppSelector(getMazeBoardState);
 
+	useEffect(() => {
+		if (steps === undefined) {
+			handlerMazeData(axisX, axisY, stepsCount, dispatch)
+		}
+	}, [steps, axisX, axisY, stepsCount, dispatch])
+
 	if (!steps) return null;
 
 	return (
@@ -46,7 +55,10 @@ export const MazeBoard = () => {
 			{fieldsDisabled ? <Flex flexDirection='column' className={style.buttons}>
 				{
 					isWin
-						? <Button> Далее </Button>
+						? <Button onClick={() => {
+							dispatch(upLevel());
+							dispatch(setOpenRulesModal(true));
+						}}>Далее </Button>
 						: <Button onClick={() => {
 							handlerMazeData(axisX, axisY, stepsCount, dispatch)
 						}}> Повторить </Button>
