@@ -1,4 +1,5 @@
-import { useMazeData } from "../../hooks/use-maze-data";
+import { useAppSelector } from "../../hooks/use-app-selector";
+import { getMazeBoardState } from "../../services/redux/selectors/maze-board/maze.board";
 import { fieldBorder, maxWidthBoard } from "../../utils/setup-game";
 import { Flex } from "../flex/flex";
 import { StepArrow } from "../step-arrow/step-arrow";
@@ -8,7 +9,14 @@ import { Field } from "./components/field/field";
 import style from './maze-board.module.css';
 
 export const MazeBoard = () => {
-	const { fieldsArr, fieldsDescriptionX, fieldsDescriptionY, steps } = useMazeData();
+	const { 
+		fieldsArr, 
+		fieldsDescriptionX, 
+		fieldsDescriptionY, 
+		steps, 
+	} = useAppSelector(getMazeBoardState);
+	
+	if (!steps)	return null;
 
 	return (
 		<Flex flexDirection='column'>

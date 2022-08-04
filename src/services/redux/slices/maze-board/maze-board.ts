@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { Action } from 'history';
 import { initialAxisX, initialAxisY, initialStepCount } from '../../../../utils/setup-game';
+import { TArrow } from '../../../../utils/types/arrow';
 
 export interface IMazeBoardState {
 	level: number;
@@ -7,6 +9,12 @@ export interface IMazeBoardState {
 	stepsCount: number;
 	axisX: number;
 	axisY: number;
+	fieldsArr: string[],
+	fieldsDescriptionX: string[],
+	fieldsDescriptionY: string[],
+	steps: TArrow[],
+	startId: string,
+	endId: string,
 }
 
 export const initialMazeBoardState = {
@@ -30,8 +38,21 @@ const mazeBoardSlice = createSlice({
 		setStepCount: (state, action) => {
 			state.stepsCount = action.payload;
 		},
+		setMazeData: (state, action) => {
+			state.startId = action.payload.startId;
+			state.endId = action.payload.endId;
+			state.fieldsArr = action.payload.fieldsArr;
+			state.fieldsDescriptionX = action.payload.fieldsDescriptionX;
+			state.fieldsDescriptionY = action.payload.fieldsDescriptionY;
+			state.steps = action.payload.steps;
+		}
 	},
 });
 
-export const { setLevel, setSpeed, setStepCount } = mazeBoardSlice.actions;
+export const { 
+	setLevel, 
+	setSpeed, 
+	setStepCount, 
+	setMazeData 
+} = mazeBoardSlice.actions;
 export const mazeBoardReducer = mazeBoardSlice.reducer;

@@ -1,9 +1,6 @@
-import { getMazeBoardState } from "../services/redux/selectors/maze-board/maze.board";
-import { setGame } from "../utils/functions/setGame";
-import { useAppSelector } from "./use-app-selector";
+import { setGame } from "./setGame";
 
-export const useMazeData = () => {
-	const { axisX, axisY, stepsCount } = useAppSelector(getMazeBoardState);
+export const createMazeData = (axisX: number, axisY: number, stepsCount: number) => {
 
 	const fieldsDescriptionX: string[] = [];
 	const fieldsDescriptionY: number[] = [];

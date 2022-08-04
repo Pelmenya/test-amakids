@@ -9,7 +9,7 @@ export interface IField {
 }
 
 export const Field = ({ id }: IField) => {
-	const { axisX } = useAppSelector(getMazeBoardState);
+	const { axisX, startId } = useAppSelector(getMazeBoardState);
 
 	return (
 		<button 
@@ -18,7 +18,7 @@ export const Field = ({ id }: IField) => {
 				width: (maxWidthBoard / axisX) - fieldBorder * 2, 
 				height: (maxWidthBoard / axisX) - fieldBorder * 2,
 				margin: fieldBorder
-			}}>{id}
+			}}>{id === startId ? "СТАРТ" : <></>}
 		</button >
 	)
 }

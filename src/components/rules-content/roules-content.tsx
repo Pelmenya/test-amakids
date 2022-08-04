@@ -9,12 +9,41 @@ import { setNeverOpenRulesModal, setOpenRulesModal } from "../../services/redux/
 import { Button } from "../button/button";
 import { useState } from "react";
 import { getMazeBoardState } from '../../services/redux/selectors/maze-board/maze.board';
+import { createMazeData } from '../../utils/functions/createMazeData';
+import { setMazeData } from '../../services/redux/slices/maze-board/maze-board';
 
 export const RulesContent = () => {
 	const [isNeverOpen, setIsNeverOpen] = useState(false);
 
 	const dispatch = useAppDispatch();
-	const { level, speed, stepsCount } = useAppSelector(getMazeBoardState);
+	const {
+		level,
+		speed,
+		stepsCount,
+		axisX,
+		axisY,
+	} = useAppSelector(getMazeBoardState);
+
+	const handlerMazeData = () => {
+		const {
+			fieldsArr,
+			fieldsDescriptionX,
+			fieldsDescriptionY,
+			steps,
+			endId,
+			startId,
+		} = createMazeData(axisX, axisY, stepsCount);
+
+		dispatch(setMazeData({
+			fieldsArr,
+			fieldsDescriptionX,
+			fieldsDescriptionY,
+			steps, 
+			endId, 
+			startId
+		}));
+		dispatch(setOpenRulesModal(false));
+	}
 
 	return (
 		<div>
@@ -38,7 +67,7 @@ export const RulesContent = () => {
 				<Button
 					onClick={() => {
 						dispatch(setNeverOpenRulesModal(isNeverOpen));
-						dispatch(setOpenRulesModal(false));
+						handlerMazeData();
 					}}>
 					<span>Понятно</span>
 				</Button>
