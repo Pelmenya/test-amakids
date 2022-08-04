@@ -1,4 +1,3 @@
-import cn from 'classnames';
 import { useAppDispatch } from '../../hooks/use-app-dispatch';
 import { MazeBoard } from '../../components/maze-board/maze-board';
 import { Modal } from '../../components/modal/modal';
@@ -30,7 +29,7 @@ export const GameMaze= () => {
     handlerMazeData(axisX, axisY, stepsCount, dispatch);
     dispatch(setOpenRulesModal(false));
   };
-  
+
   return (
     <main className='center-container'>
       <Flex className={style.container}>

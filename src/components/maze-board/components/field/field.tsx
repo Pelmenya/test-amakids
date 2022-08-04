@@ -9,30 +9,38 @@ import ok from '../../../../images/ok.svg';
 import start from '../../../../images/start.svg';
 import { useEffect, useState } from 'react';
 import { Nullable } from '../../../../utils/types/nullable';
+import { useAppDispatch } from '../../../../hooks/use-app-dispatch';
+import { setFieldsDisabled, setIsWin } from '../../../../services/redux/slices/maze-board/maze-board';
 export interface IField {
 	id: string;
 }
 
 export const Field = ({ id }: IField) => {
-	const { axisX, startId, endId } = useAppSelector(getMazeBoardState);
+	const dispatch = useAppDispatch();
+	const { axisX, startId, endId, fieldsDisabled, fieldsArr } = useAppSelector(getMazeBoardState);
 	const [picture, setPicture] = useState<Nullable<string>>(null)
 
 	useEffect(() => {
 		if (startId === id) {
 			setPicture(start)
-		}
-	}, [startId, id])
+		} else setPicture(null)
+	}, [startId, endId, id, fieldsArr])
 
 	const handlerOnClick = () => {
 		if (id === endId) { 
-			setPicture(ok) 
+			setPicture(ok)
+			dispatch(setFieldsDisabled(true));
+			dispatch(setIsWin(true));
 		} else { 
 			setPicture(over) 
+			dispatch(setFieldsDisabled(true));
+			dispatch(setIsWin(false));
 		}
 	}
 
 	return (
 		<button
+			disabled={fieldsDisabled}
 			className={style.field}
 			onClick={handlerOnClick}
 			style={{

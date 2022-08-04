@@ -20,4 +20,5 @@ export const handlerMazeData = (axisX: number, axisY: number, stepsCount: number
 		endId, 
 		startId
 	}));
+	
 }

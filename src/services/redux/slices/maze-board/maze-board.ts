@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { Action } from 'history';
 import { initialAxisX, initialAxisY, initialStepCount } from '../../../../utils/setup-game';
 import { TArrow } from '../../../../utils/types/arrow';
 
@@ -9,12 +8,14 @@ export interface IMazeBoardState {
 	stepsCount: number;
 	axisX: number;
 	axisY: number;
+	fieldsDisabled: boolean;
 	fieldsArr: string[],
 	fieldsDescriptionX: string[],
 	fieldsDescriptionY: string[],
 	steps: TArrow[],
 	startId: string,
 	endId: string,
+	isWin: false,
 }
 
 export const initialMazeBoardState = {
@@ -23,6 +24,8 @@ export const initialMazeBoardState = {
 	stepsCount: initialStepCount,
 	axisX: initialAxisX,
 	axisY: initialAxisY,
+	fieldsDisabled: true,
+	isWin: false,
 } as IMazeBoardState;
 
 const mazeBoardSlice = createSlice({
@@ -45,14 +48,23 @@ const mazeBoardSlice = createSlice({
 			state.fieldsDescriptionX = action.payload.fieldsDescriptionX;
 			state.fieldsDescriptionY = action.payload.fieldsDescriptionY;
 			state.steps = action.payload.steps;
+			state.fieldsDisabled = false;
+		},
+		setFieldsDisabled: (state, action) => {
+			state.fieldsDisabled = action.payload;
+		},
+		setIsWin: (state, action) => {
+			state.isWin = action.payload;
 		}
 	},
 });
 
-export const { 
-	setLevel, 
-	setSpeed, 
-	setStepCount, 
-	setMazeData 
+export const {
+	setLevel,
+	setSpeed,
+	setStepCount,
+	setMazeData,
+	setFieldsDisabled,
+	setIsWin
 } = mazeBoardSlice.actions;
 export const mazeBoardReducer = mazeBoardSlice.reducer;
