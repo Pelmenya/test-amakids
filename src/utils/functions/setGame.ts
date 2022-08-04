@@ -4,6 +4,7 @@ export interface IBoardField {
 	x: number;
 	y: number;
 	stepsTo: TArrow[];
+	id?: string;
 }
 
 
@@ -16,7 +17,7 @@ const getRandomStart = (board: IBoardField[]) => {
 	return num;
 }
 
-export const setSteps = (x: number, y: number, stepsCount: number) => {
+export const setGame = (x: number, y: number, stepsCount: number) => {
 	const stepsArr: TArrow[] = [];
 
 	let board: IBoardField[] = [];
@@ -48,6 +49,9 @@ export const setSteps = (x: number, y: number, stepsCount: number) => {
 			else board.push({ x: i, y: j, stepsTo: [...udrl] })
 		}
 	}
+
+	board = [...board.sort((a,b) => a.y - b.y)]
+	board.forEach( item => item.id = `${item.x}${item.y}`)
 
 	const start = getRandomStart(board);
 
@@ -91,9 +95,11 @@ export const setSteps = (x: number, y: number, stepsCount: number) => {
 	end = board.findIndex(item => item.x === dX && item.y === dY)
 	console.log(board[end])
 
-	return [...stepsArr];
+	return { 
+		steps: [...stepsArr], 
+		board: [...board ], 
+		startId: board[start].id, 
+		endId: board[end].id,
+	};
 }
-
-
-
 
