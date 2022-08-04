@@ -81,9 +81,6 @@ export const setGame = (x: number, y: number, stepsCount: number) => {
 	setBoardXY(second);
 	stepsArr.push(second);
 
-	console.log(board)
-	console.log(board[start])
-
 	for (let i = 1; i < stepsCount; i++) {
 		const xInner = dX;
 		const yInner = dY;
@@ -93,7 +90,6 @@ export const setGame = (x: number, y: number, stepsCount: number) => {
 		setBoardXY(arrow);
 	}
 	end = board.findIndex(item => item.x === dX && item.y === dY)
-	console.log(board[end])
 
 	return { 
 		steps: [...stepsArr], 
