@@ -19,5 +19,13 @@ export const useMazeData = () => {
 
 	const fieldsArr = board.map(item => item.id || '')
 
-	return { fieldsArr, fieldsDescriptionX, fieldsDescriptionY, steps }
+
+	return { 
+		fieldsArr, 
+		fieldsDescriptionX, 
+		fieldsDescriptionY, 
+		steps, 
+		startId, 
+		endId 
+	}
 }
