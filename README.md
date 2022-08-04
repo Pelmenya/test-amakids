@@ -1,6 +1,8 @@
 # test-amakids
 test-amakids
 
+[Ссылка на сайт Игра «Лабиринт»](https://test-amakids.herokuapp.com)
+
 Разработать игру «Лабиринт» на ReactJS + Redux.
 
 Есть поле размером 3 на 3 ячейки(продумайте масштабируемость). 
@@ -12,9 +14,10 @@ test-amakids
 
 Если ответ введен неправильно - указать правильный ответ. 
 Дизайн игры произвольный. 
-[Пример того, что должно получиться -](https://drive.google.com/file/d/1NRMVNcn9XbOWPKNrbzDW0sE_jr36rVka/view?usp=sharing)
 
-
+##
+[Пример того, что должно получиться ](https://drive.google.com/file/d/1NRMVNcn9XbOWPKNrbzDW0sE_jr36rVka/view?usp=sharing)
+##
 
 ## Available Scripts
 
