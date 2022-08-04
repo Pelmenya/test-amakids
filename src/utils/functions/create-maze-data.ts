@@ -1,4 +1,4 @@
-import { setGame } from "./setGame";
+import { setGame } from "./set-game";
 
 export const createMazeData = (axisX: number, axisY: number, stepsCount: number) => {
 

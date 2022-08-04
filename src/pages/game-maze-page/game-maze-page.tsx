@@ -9,18 +9,28 @@ import { getRulesState } from '../../services/redux/selectors/rules/rules';
 import { Flex } from '../../components/flex/flex';
 
 import style from './game-maze-page.module.css';
+import { getMazeBoardState } from '../../services/redux/selectors/maze-board/maze.board';
+import { handlerMazeData } from '../../utils/functions/handlers/handler-maze-data';
 
 export const GameMaze= () => {  
   const {
     isOpen: isOpenRules,
     isNeverOpen,
   } = useAppSelector(getRulesState);
+  
+  const {
+		stepsCount,
+		axisX,
+		axisY,
+	} = useAppSelector(getMazeBoardState);
 
   const dispatch = useAppDispatch();
 
   const handlerOnCloseRulesModal = () => {
+    handlerMazeData(axisX, axisY, stepsCount, dispatch);
     dispatch(setOpenRulesModal(false));
   };
+  
   return (
     <main className='center-container'>
       <Flex className={style.container}>
