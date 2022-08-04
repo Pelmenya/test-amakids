@@ -1,7 +1,8 @@
 .field {
 	cursor: pointer;
 	background-color: var(--colors-interface-success);
-	color: var(--text-primary-color);;
+	color: var(--text-primary-color);
+	border-radius: 2px;
 }
 
 .field:hover {

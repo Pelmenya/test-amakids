@@ -4,7 +4,7 @@ import { initialAxisX, initialAxisY, initialStepCount } from '../../../../utils/
 export interface IMazeBoardState {
 	level: number;
 	speed: number;
-	stepCount: number;
+	stepsCount: number;
 	axisX: number;
 	axisY: number;
 }
@@ -12,7 +12,7 @@ export interface IMazeBoardState {
 export const initialMazeBoardState = {
 	level: 1,
 	speed: 1,
-	stepCount: initialStepCount,
+	stepsCount: initialStepCount,
 	axisX: initialAxisX,
 	axisY: initialAxisY,
 } as IMazeBoardState;
@@ -28,7 +28,7 @@ const mazeBoardSlice = createSlice({
 			state.speed = action.payload;
 		},
 		setStepCount: (state, action) => {
-			state.stepCount = action.payload;
+			state.stepsCount = action.payload;
 		},
 	},
 });

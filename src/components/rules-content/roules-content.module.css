@@ -25,6 +25,10 @@
 	cursor: pointer;
 }
 
+.label:hover {
+	color: var(--text-primary-color);
+}
+
 .button {
 	align-items: center;
 	margin-top: 20px;

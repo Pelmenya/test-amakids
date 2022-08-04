@@ -1,0 +1,19 @@
+.container {
+	height: 50px;
+	width: 50px;
+	background-color: blue;
+	padding: 5px;
+	border-radius: 2px;
+}
+
+.container_down {
+	transform: rotate(180deg);
+}
+
+.container_right {
+	transform: rotate(90deg);
+}
+
+.container_left {
+	transform: rotate(270deg);
+}

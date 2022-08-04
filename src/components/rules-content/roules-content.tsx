@@ -14,7 +14,7 @@ export const RulesContent = () => {
 	const [isNeverOpen, setIsNeverOpen] = useState(false);
 
 	const dispatch = useAppDispatch();
-	const { level, speed, stepCount } = useAppSelector(getMazeBoardState);
+	const { level, speed, stepsCount } = useAppSelector(getMazeBoardState);
 
 	return (
 		<div>
@@ -23,7 +23,7 @@ export const RulesContent = () => {
 				<Flex flexDirection='column'>
 					<p className='text text_type_main-small mt-10'>Уровень сложности: <span className='text text_type_digits-default'>{level}</span></p>
 					<p className='text text_type_main-small mt-5'>Скорость: <span className='text text_type_digits-default'>{speed}</span></p>
-					<p className='text text_type_main-small mt-5 mb-10'>Кол-во ходов: <span className='text text_type_digits-default'>{stepCount}</span></p>
+					<p className='text text_type_main-small mt-5 mb-10'>Кол-во ходов: <span className='text text_type_digits-default'>{stepsCount}</span></p>
 				</Flex>
 				<img className={style.maze} src={maze} alt='Лабиринт' />
 			</Flex>
@@ -31,7 +31,7 @@ export const RulesContent = () => {
 				<input type='checkbox' id='neverOpen' name='neverOpen' onChange={e => {
 					setIsNeverOpen(e.target.checked)
 				}} />
-				<label htmlFor='neverOpen' className='text text_type_main-small text_color_inactive pl-4'>Больше не показывать </label>
+				<label htmlFor='neverOpen' className={cn('text text_type_main-small text_color_inactive pl-4', style.label)}>Больше не показывать </label>
 			</Flex>
 			<Flex className={style.button}>
 				<div />
