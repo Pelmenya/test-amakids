@@ -1,7 +1,7 @@
 # test-amakids
 test-amakids
 
-[Ссылка на сайт Игра «Лабиринт»](https://test-amakids.herokuapp.com)
+# [Игра «Лабиринт»](https://pelmenya.github.io/test-amakids/)
 
 Разработать игру «Лабиринт» на ReactJS + Redux.
 
